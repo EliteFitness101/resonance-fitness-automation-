@@ -1,8 +1,27 @@
 {
+  "version": 2,
+  "name": "resoflex-global-hni",
+  "redirects": [
+    { "source": "/workout-generator/(.*)", "destination": "https://resofit.fit/dashboard", "permanent": true },
+    { "source": "/naijameal/(.*)", "destination": "https://resofit.fit/api/metabolic-formula", "permanent": true },
+    { "source": "/bio", "destination": "https://resofit.fit", "permanent": true },
+    { "source": "/elite-form", "destination": "https://resofit.fit/elite-ng", "permanent": true }
+  ],
   "rewrites": [
+    { "source": "/assets/:path*", "destination": "https://your-supabase.supabase.co/storage/v1/object/public/assets/:path*" },
+    { "source": "/api/:path*", "destination": "/api/index.py" }
+  ],
+  "crons": [
+    { "path": "/api/cron/master_sync", "schedule": "0 8 * * *" },
+    { "path": "/api/cron/content_factory", "schedule": "0 22 * * 0" }
+  ],
+  "headers": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "index, follow" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
     }
   ]
 }

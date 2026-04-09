@@ -1,0 +1,1 @@
+Every ResoFlex™ blueprint is a licensed piece of intellectual property. Upon purchase, a unique Digital Fingerprint is embedded into the file tied to your HNI profile. Redistribution triggers an immediate IP Lock across the ecosystem and automatic notification to our legal terminals in Africa and Global jurisdictions.
