@@ -1,26 +1,52 @@
 {
   "version": 2,
-  "name": "resoflex-global-hni",
-  "redirects": [
-    { "source": "/workout-generator/(.*)", "destination": "https://resofit.fit/dashboard", "permanent": true },
-    { "source": "/naijameal/(.*)", "destination": "https://resofit.fit/api/metabolic-formula", "permanent": true },
-    { "source": "/bio", "destination": "https://resofit.fit", "permanent": true },
-    { "source": "/elite-form", "destination": "https://resofit.fit/elite-ng", "permanent": true }
-  ],
+  "name": "resoflex-industrial-empire",
+  "framework": "nextjs",
+  "regions": ["cdg1"],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/assets/:path*", "destination": "https://your-supabase.supabase.co/storage/v1/object/public/assets/:path*" },
-    { "source": "/api/:path*", "destination": "/api/index.py" }
+    {
+      "source": "/",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/legal/(.*)",
+      "destination": "/pages/legal/$1"
+    },
+    {
+      "source": "/vault/(.*)",
+      "destination": "/api/security/ip_lock"
+    }
   ],
-  "crons": [
-    { "path": "/api/cron/master_sync", "schedule": "0 8 * * *" },
-    { "path": "/api/cron/content_factory", "schedule": "0 22 * * 0" }
+  "redirects": [
+    {
+      "source": "/old-resoflex/(.*)",
+      "destination": "https://resofit.fit/$1",
+      "permanent": true
+    },
+    {
+      "source": "/name-ng/(.*)",
+      "destination": "https://resofit.fit/$1",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "index, follow" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     }
   ]
