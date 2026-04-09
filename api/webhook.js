@@ -1,19 +1,8 @@
 export default async function handler(req, res) {
+  // Direct Paystack Server-to-Server communication
   const event = req.body;
-
-  if (event.event === "charge.success") {
-    const email = event.data.customer.email;
-
-    // Trigger Telegram bot message
-    await fetch("https://api.telegram.org/bot" + process.env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        chat_id: email,
-        text: "✅ Payment received! Generate your plan now: https://resoflex.name.ng/naijameal"
-      })
-    });
+  if (event?.event === 'charge.success') {
+    console.log('Automated Sync for Reference:', event.data.reference);
   }
-
-  res.status(200).end();
+  res.status(200).send('Webhook Received');
 }
