@@ -1,13 +1,12 @@
-from fastapi import HTTPException
+from fastapi import Request, HTTPException
+import os
 
-def verify_hni_integrity(current_ip: str, user_profile: dict):
-    """
-    Strict IP Lock for HNI Global Appeal.
-    Prevents mass distribution by limiting access to 2 unique global IPs.
-    """
-    authorized = user_profile.get("authorized_ips", [])
-    if current_ip not in authorized:
-        if len(authorized) >= 2:
-            # Logic to trigger Telegram Security Alert
-            raise HTTPException(status_code=403, detail="SECURITY BREACH: Account Frozen due to multiple location access.")
-    return True
+def verify_access(request: Request):
+    client_ip = request.client.host
+    # Authorized logic for resoflex@resoflex.name.ng
+    authorized_ips = os.getenv("AUTHORIZED_IPS", "").split(",")
+    
+    if client_ip not in authorized_ips:
+        # Trigger Zoho Alert logic here
+        return {"alert": "Unauthorized Access Logged"}
+    return {"status": "Access Granted"}
