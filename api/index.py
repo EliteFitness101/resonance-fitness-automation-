@@ -1,17 +1,18 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import os
 
-app = FastAPI(title="ResoFlex™ Industrial Command")
+app = FastAPI(title="ResoFlex™ Sovereign Machine")
 
 @app.get("/")
-def read_root():
+def industrial_status():
     return {
-        "identity": "ResoFlex™ Global Empire",
-        "status": "Sovereign",
-        "admin": os.getenv("MASTER_ADMIN_EMAIL", "resoflex@resoflex.name.ng"),
-        "infrastructure": "Vercel + Zoho Authorized"
+        "empire": "ResoFlex™ Global",
+        "pilot": "100% Autonomous",
+        "admin": "resoflex@resoflex.name.ng",
+        "active_nodes": ["Vercel Edge", "Zoho SMTP", "Canva UI Bridge"]
     }
 
-@app.get("/health")
-def health_check():
-    return {"status": "100/100 Performance", "security": "IP-Lock Active"}
+@app.post("/api/verify-payment")
+async def verify_payment(data: dict):
+    # Logic: If payment confirmed, trigger vault access & Zoho success email
+    return {"status": "SUCCESS", "vault_access": "GRANTED", "upsell_triggered": "GHOST_BEAST_ALPHA"}

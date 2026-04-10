@@ -1,10 +1,17 @@
 {
   "version": 2,
+  "name": "resoflex-global-sovereignty",
   "cleanUrls": true,
   "redirects": [
     {
       "source": "/assets/(.*)",
       "destination": "https://www.resofit.fit/assets/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "resofit.fit" }],
+      "destination": "https://www.resofit.fit/$1",
       "permanent": true
     },
     {
@@ -16,14 +23,15 @@
   ],
   "rewrites": [
     { "source": "/", "destination": "/api/index" },
+    { "source": "/ui", "destination": "/api/canva_bridge" },
     { "source": "/legal/:path*", "destination": "/pages/legal/:path*" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "index, follow" },
-        { "key": "Content-Security-Policy", "value": "upgrade-insecure-requests" }
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000" },
+        { "key": "X-Frame-Options", "value": "DENY" }
       ]
     }
   ]

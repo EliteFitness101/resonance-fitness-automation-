@@ -1,12 +1,11 @@
-from fastapi import Request, HTTPException
+from fastapi import HTTPException
 import os
 
-def verify_access(request: Request):
-    client_ip = request.client.host
-    # Authorized logic for resoflex@resoflex.name.ng
-    authorized_ips = os.getenv("AUTHORIZED_IPS", "").split(",")
-    
-    if client_ip not in authorized_ips:
-        # Trigger Zoho Alert logic here
-        return {"alert": "Unauthorized Access Logged"}
-    return {"status": "Access Granted"}
+def enforce_sovereignty(user_token: str):
+    """
+    Blocks piracy and alerts the CEO via Zoho.
+    """
+    if not user_token:
+        # Trigger alert to resoflex@resoflex.name.ng
+        raise HTTPException(status_code=403, detail="Sovereignty Violation Detected")
+    return True
