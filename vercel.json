@@ -1,17 +1,16 @@
+<div style="text-align: right;"> <button onclick="navigator.clipboard.writeText(document.getElementById('fix-v-json').innerText)">📋 Copy vercel.json</button> </div>
+<pre id="fix-v-json">
 {
-  "version": 2,
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,POST" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
-      ]
-    }
-  ],
-  "rewrites": [
-    { "source": "/access", "destination": "/apps/web/public/index.html" },
-    { "source": "/verify", "destination": "/api/v1/payments/verify.py" }
-  ]
+"version": 2,
+"rewrites": [
+{
+"source": "/access",
+"destination": "/apps/web/public/index.html"
+},
+{
+"source": "/verify",
+"destination": "/api/v1/payments/verify.py"
 }
+]
+}
+</pre>
