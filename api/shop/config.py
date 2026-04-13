@@ -1,14 +1,10 @@
+<div style="text-align: right;"> <button onclick="navigator.clipboard.writeText(document.getElementById('shop-config-py').innerText)">📋 Copy config.py</button> </div>
+<pre id="shop-config-py">
 import os
-from supabase import create_client
-
-# Industrial Configuration
-SHOPIFY_STORE = os.getenv("SHOPIFY_STORE_DOMAIN")
-SHOPIFY_TOKEN = os.getenv("SHOPIFY_STOREFRONT_TOKEN")
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
-
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-def init_industrial_session(athlete_id):
-    # Synchronize Supabase Athlete profile with Shopify Order history
-    return supabase.table("athlete_vault").select("*").eq("id", athlete_id).execute()
+SHOPIFY_CONFIG = {
+"API_KEY": os.environ.get("SHOPIFY_API_KEY"),
+"PASSWORD": os.environ.get("SHOPIFY_APP_PASSWORD"),
+"STORE_NAME": "resoflex-fitness",
+"API_VERSION": "2024-04"
+}
+</pre>

@@ -1,38 +1,17 @@
 {
   "version": 2,
-  "name": "resoflex-global-sovereignty",
-  "cleanUrls": true,
-  "redirects": [
+  "headers": [
     {
-      "source": "/assets/(.*)",
-      "destination": "https://www.resofit.fit/assets/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "resofit.fit" }],
-      "destination": "https://www.resofit.fit/$1",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "resoflex.name.ng" }],
-      "destination": "https://www.resofit.fit/$1",
-      "permanent": true
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,POST" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
     }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/api/index" },
-    { "source": "/ui", "destination": "/api/canva_bridge" },
-    { "source": "/legal/:path*", "destination": "/pages/legal/:path*" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000" },
-        { "key": "X-Frame-Options", "value": "DENY" }
-      ]
-    }
+    { "source": "/access", "destination": "/apps/web/public/index.html" },
+    { "source": "/verify", "destination": "/api/v1/payments/verify.py" }
   ]
 }
