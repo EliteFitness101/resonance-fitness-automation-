@@ -1,6 +1,12 @@
 {
   "name": "resonance-fitness-automation",
   "version": "1.0.0",
+  {
+  "name": "resonance-fitness-automation",
+  "version": "1.0.0",
+  "type": "module", 
+  "scripts": { ... }
+}
   "private": true,
   "scripts": {
     "dev": "next dev",
