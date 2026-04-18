@@ -1,17 +1,14 @@
 {
   "version": 2,
-  "framework": "nextjs",
-  "functions": {
-    "api/**/*.py": {
-      "runtime": "vercel-python@0.1.1"
-    }
-  },
   "rewrites": [
-    { "source": "/api/v1/bots/telegram", "destination": "/api/v1/bots/telegram.py" },
-    { "source": "/api/v1/pay/webhook", "destination": "/api/v1/pay/paystack.py" },
-    { "source": "/api/v1/pay/verify", "destination": "/api/v1/pay/verify.py" },
-    { "source": "/api/v1/ai/generate", "destination": "/api/v1/ai/generate_plan.py" },
-    { "source": "/api/v1/auth/callback", "destination": "/api/v1/auth/callback.js" },
-    { "source": "/:slug", "destination": "/[slug]" }
+    { "source": "/api/v1/:path*", "destination": "/api/index.py" }
+  ],
+  "headers": [
+    {
+      "source": "/public/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
 }
