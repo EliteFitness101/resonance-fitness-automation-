@@ -1,6 +1,6 @@
 {
-  "name": "resoflex-platform",
-  "version": "1.0.0",
+  "name": "resonance-fitness-automation",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,22 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "next": "canary",
     "react": "latest",
     "react-dom": "latest",
-    "@supabase/supabase-js": "latest",
-    "@vercel/blob": "latest",
-    "lucide-react": "latest",
-    "clsx": "latest",
-    "tailwind-merge": "latest"
+    "lucide-react": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
     "postcss": "latest",
-    "tailwindcss": "latest",
-    "autoprefixer": "latest"
+    "tailwindcss": "latest"
   }
 }
