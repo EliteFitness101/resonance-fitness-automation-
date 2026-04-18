@@ -1,5 +1,15 @@
-google-generativeai
-openai
-python-dotenv
-requests
-flask
+# Web Framework & Server
+flask==3.0.0
+flask-cors==4.0.0
+
+# Database & Storage
+supabase==2.3.7
+postgrest==0.16.2
+
+# AI & Automation
+google-generativeai==0.4.1
+requests==2.31.0
+
+# Security & Utils
+python-dotenv==1.0.1
+pytz==2024.1
