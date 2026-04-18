@@ -1,15 +1,15 @@
 {
+  "version": 2,
   "framework": "nextjs",
   "functions": {
-    "api/**/*.py": {
-      "runtime": "vercel-python@0.1.1"
-    },
-    "api/**/*.js": {
-      "runtime": "vercel-node@latest"
-    }
+    "api/**/*.py": { "runtime": "vercel-python@0.1.1" }
   },
   "rewrites": [
-    { "source": "/start", "destination": "/" },
-    { "source": "/elite", "destination": "/api/v1/shop/elite" }
+    { "source": "/start", "destination": "/start" },
+    { "source": "/naijafit", "destination": "/naijafit" },
+    { "source": "/naijafitmeals", "destination": "/naijafitmeals" },
+    { "source": "/resoflex-elite", "destination": "/elite" },
+    { "source": "/workout-generator", "destination": "/generator" },
+    { "source": "/upgrade", "destination": "/api/v1/shop/elite" }
   ]
 }
