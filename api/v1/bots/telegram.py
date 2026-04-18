@@ -1,8 +1,12 @@
+# api/v1/bots/telegram.py
 import os
-import requests
+from flask import Flask, request, jsonify
 
-def send_to_telegram(message):
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID")
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    requests.post(url, data={"chat_id": chat_id, "text": message, "parse_mode": "Markdown"})
+def handler(req):
+    if req.method == "POST":
+        update = req.get_json()
+        # Logic to handle incoming messages from users
+        return jsonify({"status": "ok"}), 200
+    
+    # This allows you to test the URL in a browser
+    return jsonify({"message": "ResoFlex Bot API is active"}), 200

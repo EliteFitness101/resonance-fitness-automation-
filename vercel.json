@@ -1,15 +1,9 @@
 {
-  "version": 2,
-  "framework": "nextjs",
-  "functions": {
-    "api/**/*.py": { "runtime": "vercel-python@0.1.1" }
-  },
+  "functions": { "api/**/*.py": { "runtime": "vercel-python@0.1.1" } },
   "rewrites": [
-    { "source": "/start", "destination": "/start" },
-    { "source": "/naijafit", "destination": "/naijafit" },
-    { "source": "/naijafitmeals", "destination": "/naijafitmeals" },
-    { "source": "/resoflex-elite", "destination": "/elite" },
-    { "source": "/workout-generator", "destination": "/generator" },
-    { "source": "/upgrade", "destination": "/api/v1/shop/elite" }
+    { "source": "/api/v1/pay/webhook", "destination": "/api/v1/pay/paystack.py" },
+    { "source": "/api/v1/pay/verify", "destination": "/api/v1/pay/verify.py" },
+    { "source": "/api/v1/ai/generate", "destination": "/api/v1/ai/generate_plan.py" },
+    { "source": "/:slug", "destination": "/[slug]" }
   ]
 }
