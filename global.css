@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased;
+  }
+}
+
+/* Neural OS UI Utility */
+.os-card {
+  @apply bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 backdrop-blur-sm;
+}
