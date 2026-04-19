@@ -4,16 +4,16 @@ import Link from 'next/link';
 
 export default function ConfirmationPage() {
   return (
-    <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 text-center">
-      <Head><title>ResoFlex™ | Success</title></Head>
-      <div className="max-w-md w-full bg-zinc-900/50 border border-zinc-800 p-10 rounded-3xl space-y-6">
-        <div className="relative h-48 w-full">
-          <Image src="/success-icon.webp" alt="Success" layout="fill" objectFit="contain" priority />
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 text-center">
+      <Head><title>ResoFlex™ | System Optimized</title></Head>
+      <div className="max-w-md space-y-8 bg-zinc-900/30 p-12 rounded-[3rem] border border-zinc-800">
+        <div className="relative w-48 h-48 mx-auto">
+          <Image src="/success-icon.webp" alt="Success" layout="fill" objectFit="contain" />
         </div>
-        <h1 className="text-4xl font-black text-yellow-400">OPTIMIZED</h1>
-        <p className="text-zinc-400 uppercase tracking-widest text-sm">System Activated</p>
+        <h2 className="text-5xl font-black text-yellow-400 tracking-tighter">OPTIMIZED</h2>
+        <p className="text-zinc-500 uppercase tracking-widest text-xs">Biometric Sync Complete. System Activated.</p>
         <Link href="/">
-          <button className="w-full bg-white text-black font-bold py-4 rounded-xl">RETURN TO CORE</button>
+          <button className="w-full bg-white text-black font-black py-5 rounded-2xl uppercase tracking-widest">Return to Core</button>
         </Link>
       </div>
     </div>

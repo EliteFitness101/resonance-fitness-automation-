@@ -1,38 +1,45 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { supabase } from '../lib/supabase';
 
 export default function ResetPage() {
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleReset = async (e) => {
     e.preventDefault();
-    router.push('/confirmation');
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    // Push Biometric Data to Supabase Leads Table
+    const { error } = await supabase.from('resoflex_leads').insert([data]);
+
+    if (!error) {
+      router.push('/confirmation');
+    } else {
+      alert("System Sync Error: Check connection.");
+    }
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden font-sans">
-      <Head><title>ResoFlex™ | Initializing Reset</title></Head>
-      <Image src="/bio-frame.webp" alt="HUD Interface" layout="fill" objectFit="cover" className="fixed opacity-30 -z-10" />
+    <div className="relative min-h-screen bg-black text-white flex items-center justify-center p-6">
+      <Head><title>ResoFlex™ | Biometric Sync</title></Head>
+      <Image src="/bio-frame.webp" alt="HUD" layout="fill" objectFit="cover" className="fixed opacity-20 -z-10" />
 
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen p-6">
-        <form onSubmit={handleSubmit} className="w-full max-w-2xl p-10 bg-black/80 border border-zinc-800 rounded-3xl">
-          <h2 className="text-4xl font-black mb-8 text-yellow-400 text-center uppercase">Biometric Input</h2>
-          <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Age</label>
-                <input type="number" className="w-full bg-zinc-900 border border-zinc-700 p-4 rounded-xl mt-2 font-mono" required />
-              </div>
-              <div>
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Weight (kg)</label>
-                <input type="number" className="w-full bg-zinc-900 border border-zinc-700 p-4 rounded-xl mt-2 font-mono" required />
-              </div>
-            </div>
-            <button type="submit" className="w-full bg-yellow-400 text-black font-black py-4 rounded-xl">OPTIMIZE & PAY N1,000</button>
-          </div>
-        </form>
-      </main>
+      <form onSubmit={handleReset} className="w-full max-w-xl bg-black/80 border border-zinc-800 p-10 rounded-3xl space-y-8">
+        <h1 className="text-4xl font-black text-center text-yellow-400 uppercase tracking-tighter">Biometric Sync</h1>
+        
+        <div className="space-y-4">
+          <input name="age" type="number" placeholder="AGE" className="w-full bg-zinc-900 border border-zinc-800 p-5 rounded-2xl font-mono text-xl focus:border-yellow-400 outline-none" required />
+          <input name="weight" type="number" placeholder="WEIGHT (KG)" className="w-full bg-zinc-900 border border-zinc-800 p-5 rounded-2xl font-mono text-xl focus:border-yellow-400 outline-none" required />
+          <select name="goal" className="w-full bg-zinc-900 border border-zinc-800 p-5 rounded-2xl font-bold text-lg text-zinc-400">
+            <option>INDUSTRIAL STRENGTH</option>
+            <option>FAT LOSS RESET</option>
+          </select>
+        </div>
+
+        <button type="submit" className="w-full bg-yellow-400 text-black font-black py-6 rounded-2xl text-xl hover:scale-[1.02] transition-transform">INITIALIZE N1,000 RESET</button>
+      </form>
     </div>
   );
 }
